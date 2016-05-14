@@ -77,6 +77,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Visualisation.Core\Visualisation.Core.csproj">
+      <Project>{23489F7A-5E23-415C-BF0E-5165B981FF1F}</Project>
+      <Name>Visualisation.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Visualisation.Web\Visualisation.Web.csproj">
       <Project>{bc6991df-8b32-4e5f-9f52-228fe3b63a8e}</Project>
       <Name>Visualisation.Web</Name>

@@ -1,0 +1,14 @@
+C:\Projects\Git\Visualisation\AwsWebApp1\bin\AwsWebApp1.dll.config
+C:\Projects\Git\Visualisation\AwsWebApp1\bin\AwsWebApp1.dll
+C:\Projects\Git\Visualisation\AwsWebApp1\bin\AwsWebApp1.pdb
+C:\Projects\Git\Visualisation\AwsWebApp1\bin\AWSSDK.Core.dll
+C:\Projects\Git\Visualisation\AwsWebApp1\bin\AWSSDK.EC2.dll
+C:\Projects\Git\Visualisation\AwsWebApp1\bin\AWSSDK.S3.dll
+C:\Projects\Git\Visualisation\AwsWebApp1\bin\AWSSDK.SimpleDB.dll
+C:\Projects\Git\Visualisation\AwsWebApp1\bin\AWSSDK.Core.xml
+C:\Projects\Git\Visualisation\AwsWebApp1\bin\AWSSDK.EC2.xml
+C:\Projects\Git\Visualisation\AwsWebApp1\bin\AWSSDK.S3.xml
+C:\Projects\Git\Visualisation\AwsWebApp1\bin\AWSSDK.SimpleDB.xml
+C:\Projects\Git\Visualisation\AwsWebApp1\obj\Debug\AwsWebApp1.csprojResolveAssemblyReference.cache
+C:\Projects\Git\Visualisation\AwsWebApp1\obj\Debug\AwsWebApp1.dll
+C:\Projects\Git\Visualisation\AwsWebApp1\obj\Debug\AwsWebApp1.pdb

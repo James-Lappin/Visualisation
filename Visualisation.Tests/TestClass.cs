@@ -1,13 +1,14 @@
 ﻿using NUnit.Framework;
 using RestSharp;
 using System;
-using Visualisation.Web.Models;
+using System.Net;
 
 namespace Visualisation.Tests
 {
 	[TestFixture]
 	public class TestClass
 	{
+		//This not a test!!!! Just manually check.
 		[Test]
 		public void TestMethod()
 		{
@@ -17,20 +18,17 @@ namespace Visualisation.Tests
 			{
 				var lat = random.Next(50, 60);
 				var longatude = random.Next(0, 10);
-				var transactionRequest = new TransactionRequest { Lat = lat, Long = -longatude, Title = "Test transaction" };
 				var restClient = new RestClient("http://localhost/");
 				var request = new RestRequest("Visualisation/TransactionRequest/Location", Method.POST);
-				request.AddParameter("lat", transactionRequest.Lat);
-				request.AddParameter("long", transactionRequest.Long);
-				request.AddParameter("title", transactionRequest.Title);
+				request.AddParameter("latitude", lat);
+				request.AddParameter("longitude", longatude);
+				request.AddParameter("title", "Test transaction");
 
 				var response = restClient.Post(request);
+
+				Assert.That(response, Is.Not.Null);
+				Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
 			}
-
-
-
-			//Assert.That(response, Is.Not.Null);
-			//Assert.That(response.StatusCode, Is.EqualTo((int)HttpStatusCode.OK));
 		}
 	}
 }
