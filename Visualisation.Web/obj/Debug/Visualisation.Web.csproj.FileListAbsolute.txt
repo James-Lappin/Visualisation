@@ -34,6 +34,6 @@ C:\Projects\Git\Visualisation\Visualisation.Web\bin\System.Web.WebPages.Deployme
 C:\Projects\Git\Visualisation\Visualisation.Web\bin\System.Web.WebPages.Razor.xml
 C:\Projects\Git\Visualisation\Visualisation.Web\bin\Antlr3.Runtime.pdb
 C:\Projects\Git\Visualisation\Visualisation.Web\bin\Newtonsoft.Json.xml
+C:\Projects\Git\Visualisation\Visualisation.Web\obj\Debug\Visualisation.Web.csprojResolveAssemblyReference.cache
 C:\Projects\Git\Visualisation\Visualisation.Web\obj\Debug\Visualisation.Web.dll
 C:\Projects\Git\Visualisation\Visualisation.Web\obj\Debug\Visualisation.Web.pdb
-C:\Projects\Git\Visualisation\Visualisation.Web\obj\Debug\Visualisation.Web.csprojResolveAssemblyReference.cache
