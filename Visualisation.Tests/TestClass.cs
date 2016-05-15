@@ -14,12 +14,14 @@ namespace Visualisation.Tests
 		{
 			var random = new Random();
 
-			for (int i = 0; i < 5; i++)
+			var restClient = new RestClient("http://maps.rebtabpyik.eu-west-1.elasticbeanstalk.com");
+			//var restClient = new RestClient("http://localhost/Visualisation");
+
+			for (var i = 0; i < 5; i++)
 			{
+				var request = new RestRequest("TransactionRequest/Location", Method.POST);
 				var lat = random.Next(50, 60);
 				var longatude = random.Next(0, 10);
-				var restClient = new RestClient("http://localhost/");
-				var request = new RestRequest("Visualisation/TransactionRequest/Location", Method.POST);
 				request.AddParameter("latitude", lat);
 				request.AddParameter("longitude", longatude);
 				request.AddParameter("title", "Test transaction");
@@ -31,10 +33,9 @@ namespace Visualisation.Tests
 			}
 
 			var postcodes = new[] { "HG1 5NA", "SE10 0QG", "N1 9HF", "SL4 1NJ", "ls10 3tp" };
-			for (int i = 0; i < 5; i++)
+			for (var i = 0; i < 5; i++)
 			{
-				var restClient = new RestClient("http://localhost/");
-				var request = new RestRequest("Visualisation/TransactionRequest/Location", Method.POST);
+				var request = new RestRequest("TransactionRequest/Location", Method.POST);
 				request.AddParameter("Postcode", postcodes[i]);
 				request.AddParameter("title", "Postcode Test transaction");
 

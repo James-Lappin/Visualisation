@@ -14,7 +14,6 @@ namespace Visualisation.Web.Controllers
 		}
 
 		[HttpPost]
-		[AllowAnonymous]
 		public void Location(TransactionRequestModel model)
 		{
 			if (model == null) { return; }
