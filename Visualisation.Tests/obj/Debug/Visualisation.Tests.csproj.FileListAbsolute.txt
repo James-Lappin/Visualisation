@@ -35,9 +35,7 @@ C:\Projects\Git\Visualisation\Visualisation.Tests\bin\Debug\Microsoft.Owin.Secur
 C:\Projects\Git\Visualisation\Visualisation.Tests\bin\Debug\RestSharp.dll
 C:\Projects\Git\Visualisation\Visualisation.Tests\bin\Debug\RestSharp.xml
 C:\Projects\Git\Visualisation\Visualisation.Tests\bin\Debug\Visualisation.Core.dll
-C:\Projects\Git\Visualisation\Visualisation.Tests\bin\Debug\EntityFramework.dll
 C:\Projects\Git\Visualisation\Visualisation.Tests\bin\Debug\Visualisation.Core.pdb
-C:\Projects\Git\Visualisation\Visualisation.Tests\bin\Debug\EntityFramework.xml
 C:\Projects\Git\Visualisation\Visualisation.Tests\bin\Debug\Microsoft.Practices.Unity.dll
 C:\Projects\Git\Visualisation\Visualisation.Tests\bin\Debug\Microsoft.Practices.ServiceLocation.dll
 C:\Projects\Git\Visualisation\Visualisation.Tests\bin\Debug\Microsoft.Practices.Unity.xml
@@ -46,3 +44,4 @@ C:\Projects\Git\Visualisation\Visualisation.Tests\bin\Debug\Microsoft.Practices.
 C:\Projects\Git\Visualisation\Visualisation.Tests\bin\Debug\WebActivatorEx.dll
 C:\Projects\Git\Visualisation\Visualisation.Tests\bin\Debug\Microsoft.Practices.Unity.Mvc.dll
 C:\Projects\Git\Visualisation\Visualisation.Tests\bin\Debug\Microsoft.Practices.Unity.Mvc.xml
+C:\Projects\Git\Visualisation\Visualisation.Tests\bin\Debug\GoogleMaps.LocationServices.dll

@@ -2,9 +2,9 @@
 var Mapping;
 (function (Mapping) {
     var LatLng = google.maps.LatLng;
-    var Marker = google.maps.Marker;
     var JudoMap = (function () {
         function JudoMap(mapDiv) {
+            var _this = this;
             var mapStyles = [
                 {
                     featureType: "all",
@@ -14,31 +14,42 @@ var Mapping;
                     ]
                 }
             ];
+            var latLng = new LatLng(54.559322, -4.174804);
             var mapOptions = {
-                center: new LatLng(54.559322, -4.174804),
+                center: latLng,
                 zoom: 6,
                 styles: mapStyles,
                 draggable: false,
                 zoomControl: false,
                 scrollwheel: false,
-                disableDoubleClickZoom: true
+                disableDoubleClickZoom: true,
+                streetViewControl: false
             };
             this.map = new google.maps.Map(mapDiv, mapOptions);
+            $(window).resize(function () { return _this.map.setCenter(latLng); });
         }
         JudoMap.prototype.drawOnMap = function (label, lat, long) {
-            var point = new LatLng(parseFloat(lat), parseFloat(long));
-            var markerLabel = {
-                text: label
-            };
-            var marker = new Marker({
+            var point = new LatLng(lat, long);
+            var shape = new google.maps.Circle({
+                center: point,
                 map: this.map,
-                position: point,
-                label: markerLabel,
+                radius: 7000,
+                visible: true,
+                clickable: false,
                 draggable: false,
-                clickable: false
+                fillColor: "#ffbe0f",
+                strokeColor: "#b3850b",
+                strokeWeight: 1
             });
+            var infoWindow = new google.maps.InfoWindow({
+                disableAutoPan: true,
+                content: label,
+                position: point,
+            });
+            infoWindow.open(this.map, shape);
             setTimeout(function () {
-                marker.setMap(null);
+                shape.setMap(null);
+                infoWindow.close();
             }, 5000);
         };
         return JudoMap;

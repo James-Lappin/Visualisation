@@ -37,10 +37,6 @@ C:\Projects\Git\Visualisation\Visualisation.Web\bin\Newtonsoft.Json.xml
 C:\Projects\Git\Visualisation\Visualisation.Web\obj\Debug\Visualisation.Web.csprojResolveAssemblyReference.cache
 C:\Projects\Git\Visualisation\Visualisation.Web\obj\Debug\Visualisation.Web.dll
 C:\Projects\Git\Visualisation\Visualisation.Web\obj\Debug\Visualisation.Web.pdb
-C:\Projects\Git\Visualisation\Visualisation.Web\bin\EntityFramework.dll
-C:\Projects\Git\Visualisation\Visualisation.Web\bin\EntityFramework.SqlServer.dll
-C:\Projects\Git\Visualisation\Visualisation.Web\bin\EntityFramework.xml
-C:\Projects\Git\Visualisation\Visualisation.Web\bin\EntityFramework.SqlServer.xml
 C:\Projects\Git\Visualisation\Visualisation.Web\bin\Visualisation.Core.dll
 C:\Projects\Git\Visualisation\Visualisation.Web\bin\Visualisation.Core.pdb
 C:\Projects\Git\Visualisation\Visualisation.Web\bin\Microsoft.Practices.ServiceLocation.dll
@@ -55,3 +51,4 @@ C:\Projects\Git\Visualisation\Visualisation.Web\bin\Microsoft.Practices.Unity.Re
 C:\Projects\Git\Visualisation\Visualisation.Web\bin\Microsoft.Practices.Unity.Mvc.dll
 C:\Projects\Git\Visualisation\Visualisation.Web\bin\WebActivatorEx.dll
 C:\Projects\Git\Visualisation\Visualisation.Web\bin\Microsoft.Practices.Unity.Mvc.xml
+C:\Projects\Git\Visualisation\Visualisation.Web\bin\GoogleMaps.LocationServices.dll
