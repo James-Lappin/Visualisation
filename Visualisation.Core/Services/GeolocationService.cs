@@ -1,4 +1,5 @@
 ﻿using GoogleMaps.LocationServices;
+using Visualisation.Core.Domain;
 
 namespace Visualisation.Core.Services
 {

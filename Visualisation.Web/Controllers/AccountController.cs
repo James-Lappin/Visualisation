@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
-using test.Models;
 using Visualisation.Core.Domain;
+using Visualisation.Web.Models;
 
 namespace Visualisation.Web.Controllers
 {

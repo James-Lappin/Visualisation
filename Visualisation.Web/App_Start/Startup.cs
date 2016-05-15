@@ -1,9 +1,9 @@
 ﻿using Microsoft.Owin;
 using Owin;
-using Visualisation.Web.Hubs;
+using Visualisation.Web;
 
 [assembly: OwinStartup(typeof(Startup))]
-namespace Visualisation.Web.Hubs
+namespace Visualisation.Web
 {
 	public class Startup
 	{

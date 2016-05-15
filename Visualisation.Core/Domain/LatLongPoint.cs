@@ -1,4 +1,4 @@
-﻿namespace Visualisation.Core.Services
+﻿namespace Visualisation.Core.Domain
 {
 	public class LatLongPoint
 	{
