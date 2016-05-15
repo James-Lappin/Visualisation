@@ -14,8 +14,8 @@ namespace Visualisation.Tests
 		{
 			var random = new Random();
 
-			var restClient = new RestClient("http://maps.rebtabpyik.eu-west-1.elasticbeanstalk.com");
-			//var restClient = new RestClient("http://localhost/Visualisation");
+			//var restClient = new RestClient("http://maps.rebtabpyik.eu-west-1.elasticbeanstalk.com");
+			var restClient = new RestClient("http://localhost/Visualisation");
 
 			for (var i = 0; i < 5; i++)
 			{

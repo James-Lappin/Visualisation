@@ -4,6 +4,6 @@ namespace Visualisation.Core.Interfaces
 {
 	public interface IMapDisplay
 	{
-		void DisplayLocation(TransactionRequest transactionRequest);
+		void DisplayLocation(string title, LatLongPoint latLong);
 	}
 }
