@@ -21,7 +21,7 @@ module Mapping {
                     ]
                 }
             ];
-            const latLngForCenter = new LatLng(54.559322, -4.174804 );
+            const latLngForCenter = new LatLng(54.559322, -4.174804);
             const mapOptions: MapOptions = {
                 center: latLngForCenter,
                 zoom: 6,
@@ -37,13 +37,13 @@ module Mapping {
             $(window).resize(() => this.map.setCenter(latLngForCenter));
         }
 
-        drawOnMap(label:string, lat: number, long: number) {
+        drawOnMap(label: string, lat: number, long: number, radiusModifier: number) {
             const point = new LatLng(lat, long);
-            
+            var radius = 10000 * radiusModifier;
             var shape = new google.maps.Circle({
                 center: point,
                 map: this.map,
-                radius: 7000,
+                radius: radius,
                 visible: true,
                 clickable: false,
                 draggable: false,
@@ -56,7 +56,7 @@ module Mapping {
 
             if (label) {
                 if (label.length > this.maxLengthOfLabel) {
-                    label = label.substr(this.maxLengthOfLabel);
+                    label = label.substr(0, this.maxLengthOfLabel);
                 }
 
                 var infoWindow = new google.maps.InfoWindow({

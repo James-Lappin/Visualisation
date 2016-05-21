@@ -10,8 +10,8 @@ var Mapping;
         MapHub.prototype.start = function () {
             var _this = this;
             var mapHub = $.connection.mapHub;
-            mapHub.client.displayLocation = function (label, lat, long) {
-                _this.map.drawOnMap(label, lat, long);
+            mapHub.client.displayLocation = function (label, lat, long, radiusModifier) {
+                _this.map.drawOnMap(label, lat, long, radiusModifier);
             };
             $.connection.hub.start().done();
         };
@@ -19,3 +19,4 @@ var Mapping;
     }());
     Mapping.MapHub = MapHub;
 })(Mapping || (Mapping = {}));
+//# sourceMappingURL=MapHub.js.map

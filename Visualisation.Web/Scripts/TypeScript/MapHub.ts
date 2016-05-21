@@ -9,7 +9,7 @@ interface MapHubProxy {
     client: MapClient;
 }
 interface MapClient {
-    displayLocation: (title: string, lat: number, long: number) => void;
+    displayLocation: (title: string, lat: number, long: number, radiusModifier: number) => void;
 }
 
 module Mapping {
@@ -22,8 +22,8 @@ module Mapping {
 
         start() {
             const mapHub = $.connection.mapHub;
-            mapHub.client.displayLocation = (label, lat, long) => {
-                this.map.drawOnMap(label, lat, long);
+            mapHub.client.displayLocation = (label, lat, long, radiusModifier) => {
+                this.map.drawOnMap(label, lat, long, radiusModifier);
             };
             $.connection.hub.start().done();
         }

@@ -6,10 +6,10 @@ namespace Visualisation.Web.Hubs
 {
 	public class MapHub : Hub, IMapDisplay
 	{
-		public void DisplayLocation(string title, LatLongPoint latLong)
+		public void DisplayLocation(string title, LatLongPoint latLong, double radiusModifier)
 		{
 			var mapHub = GlobalHost.ConnectionManager.GetHubContext<MapHub>();
-			mapHub.Clients.All.displayLocation(title, latLong.Latitude, latLong.Longitude);
+			mapHub.Clients.All.displayLocation(title, latLong.Latitude, latLong.Longitude, radiusModifier);
 		}
 	}
 }

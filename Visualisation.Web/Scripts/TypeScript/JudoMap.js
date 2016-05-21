@@ -30,12 +30,13 @@ var Mapping;
             this.map = new google.maps.Map(mapDiv, mapOptions);
             $(window).resize(function () { return _this.map.setCenter(latLngForCenter); });
         }
-        JudoMap.prototype.drawOnMap = function (label, lat, long) {
+        JudoMap.prototype.drawOnMap = function (label, lat, long, radiusModifier) {
             var point = new LatLng(lat, long);
+            var radius = 10000 * radiusModifier;
             var shape = new google.maps.Circle({
                 center: point,
                 map: this.map,
-                radius: 7000,
+                radius: radius,
                 visible: true,
                 clickable: false,
                 draggable: false,
@@ -46,7 +47,7 @@ var Mapping;
             setTimeout(function () { return shape.setMap(null); }, this.timeoutTimeMs);
             if (label) {
                 if (label.length > this.maxLengthOfLabel) {
-                    label = label.substr(this.maxLengthOfLabel);
+                    label = label.substr(0, this.maxLengthOfLabel);
                 }
                 var infoWindow = new google.maps.InfoWindow({
                     disableAutoPan: true,
@@ -61,3 +62,4 @@ var Mapping;
     }());
     Mapping.JudoMap = JudoMap;
 })(Mapping || (Mapping = {}));
+//# sourceMappingURL=JudoMap.js.map
