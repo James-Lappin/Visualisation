@@ -23,7 +23,6 @@ module Mapping {
         start() {
             const mapHub = $.connection.mapHub;
             mapHub.client.displayLocation = (label, lat, long) => {
-                console.log("maphub ");
                 this.map.drawOnMap(label, lat, long);
             };
             $.connection.hub.start().done();

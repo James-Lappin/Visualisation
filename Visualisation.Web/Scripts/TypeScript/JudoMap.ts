@@ -8,9 +8,11 @@ module Mapping {
 
     export class JudoMap {
         private map: google.maps.Map;
+        private timeoutTimeMs = 5000;
+        private maxLengthOfLabel = 20;
 
         constructor(mapDiv: Element) {
-            var mapStyles: MapTypeStyle[] = [
+            const mapStyles: MapTypeStyle[] = [
                 {
                     featureType: "all",
                     elementType: "labels",
@@ -19,9 +21,9 @@ module Mapping {
                     ]
                 }
             ];
-            const latLng = new LatLng(54.559322, -4.174804 );
-            var mapOptions: MapOptions = {
-                center: latLng,
+            const latLngForCenter = new LatLng(54.559322, -4.174804 );
+            const mapOptions: MapOptions = {
+                center: latLngForCenter,
                 zoom: 6,
                 styles: mapStyles,
                 draggable: false,
@@ -29,10 +31,10 @@ module Mapping {
                 scrollwheel: false,
                 disableDoubleClickZoom: true,
                 streetViewControl: false
-            }
+            };
 
             this.map = new google.maps.Map(mapDiv, mapOptions);
-            $(window).resize(() => this.map.setCenter(latLng));
+            $(window).resize(() => this.map.setCenter(latLngForCenter));
         }
 
         drawOnMap(label:string, lat: number, long: number) {
@@ -50,18 +52,22 @@ module Mapping {
                 strokeWeight: 1
             });
 
-            var infoWindow = new google.maps.InfoWindow({
-                disableAutoPan: true,
-                content: label,
-                position: point, 
-                
-            });
-            infoWindow.open(this.map, shape);
+            setTimeout(() => shape.setMap(null), this.timeoutTimeMs);
 
-            setTimeout(() => {
-                shape.setMap(null);
-                infoWindow.close();
-            }, 5000);
+            if (label) {
+                if (label.length > this.maxLengthOfLabel) {
+                    label = label.substr(this.maxLengthOfLabel);
+                }
+
+                var infoWindow = new google.maps.InfoWindow({
+                    disableAutoPan: true,
+                    content: label,
+                    position: point,
+                });
+                infoWindow.open(this.map, shape);
+
+                setTimeout(() => infoWindow.close(), this.timeoutTimeMs);
+            }
         }
     }
 }

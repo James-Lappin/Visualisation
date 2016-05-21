@@ -43,6 +43,13 @@ namespace Visualisation.Core.Responsitories
 							.FirstOrDefault();
 		}
 
+		public TEntity GetSingleByFilter(Expression<Func<TEntity, bool>> predicate)
+		{
+			return _collection
+				.Find(predicate)
+				.SingleOrDefault();
+		}
+
 		public IList<TEntity> GetAll()
 		{
 			return _collection.Find(FilterDefinition<TEntity>.Empty).ToList();

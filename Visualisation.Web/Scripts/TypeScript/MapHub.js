@@ -11,7 +11,6 @@ var Mapping;
             var _this = this;
             var mapHub = $.connection.mapHub;
             mapHub.client.displayLocation = function (label, lat, long) {
-                console.log("maphub ");
                 _this.map.drawOnMap(label, lat, long);
             };
             $.connection.hub.start().done();
@@ -20,4 +19,3 @@ var Mapping;
     }());
     Mapping.MapHub = MapHub;
 })(Mapping || (Mapping = {}));
-//# sourceMappingURL=MapHub.js.map

@@ -17,14 +17,15 @@ namespace Visualisation.Tests
 			//var restClient = new RestClient("http://maps.rebtabpyik.eu-west-1.elasticbeanstalk.com");
 			var restClient = new RestClient("http://localhost/Visualisation");
 
-			for (var i = 0; i < 5; i++)
+			for (var i = 0; i < 1000; i++)
 			{
 				var request = new RestRequest("TransactionRequest/Location", Method.POST);
-				var lat = random.Next(50, 60);
-				var longatude = random.Next(0, 10);
+				var lat = random.Next(5000, 5500) / (double)100;
+				var longatude = random.Next(000, 1000) / (double)100;
 				request.AddParameter("latitude", lat);
-				request.AddParameter("longitude", longatude);
+				request.AddParameter("longitude", -longatude);
 				request.AddParameter("title", "Test transaction");
+				request.AddParameter("PaymentType", "Payment");
 
 				var response = restClient.Post(request);
 

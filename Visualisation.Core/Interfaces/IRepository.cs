@@ -11,6 +11,7 @@ namespace Visualisation.Core.Interfaces
 		void Delete(TEntity entity);
 
 		TEntity GetById(Guid id);
+		TEntity GetSingleByFilter(Expression<Func<TEntity, bool>> predicate);
 		IList<TEntity> GetAll();
 		IList<TEntity> GetByFilter(Expression<Func<TEntity, bool>> predicate);
 	}

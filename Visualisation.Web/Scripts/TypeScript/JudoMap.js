@@ -5,6 +5,8 @@ var Mapping;
     var JudoMap = (function () {
         function JudoMap(mapDiv) {
             var _this = this;
+            this.timeoutTimeMs = 5000;
+            this.maxLengthOfLabel = 20;
             var mapStyles = [
                 {
                     featureType: "all",
@@ -14,9 +16,9 @@ var Mapping;
                     ]
                 }
             ];
-            var latLng = new LatLng(54.559322, -4.174804);
+            var latLngForCenter = new LatLng(54.559322, -4.174804);
             var mapOptions = {
-                center: latLng,
+                center: latLngForCenter,
                 zoom: 6,
                 styles: mapStyles,
                 draggable: false,
@@ -26,7 +28,7 @@ var Mapping;
                 streetViewControl: false
             };
             this.map = new google.maps.Map(mapDiv, mapOptions);
-            $(window).resize(function () { return _this.map.setCenter(latLng); });
+            $(window).resize(function () { return _this.map.setCenter(latLngForCenter); });
         }
         JudoMap.prototype.drawOnMap = function (label, lat, long) {
             var point = new LatLng(lat, long);
@@ -41,19 +43,21 @@ var Mapping;
                 strokeColor: "#b3850b",
                 strokeWeight: 1
             });
-            var infoWindow = new google.maps.InfoWindow({
-                disableAutoPan: true,
-                content: label,
-                position: point,
-            });
-            infoWindow.open(this.map, shape);
-            setTimeout(function () {
-                shape.setMap(null);
-                infoWindow.close();
-            }, 5000);
+            setTimeout(function () { return shape.setMap(null); }, this.timeoutTimeMs);
+            if (label) {
+                if (label.length > this.maxLengthOfLabel) {
+                    label = label.substr(this.maxLengthOfLabel);
+                }
+                var infoWindow = new google.maps.InfoWindow({
+                    disableAutoPan: true,
+                    content: label,
+                    position: point,
+                });
+                infoWindow.open(this.map, shape);
+                setTimeout(function () { return infoWindow.close(); }, this.timeoutTimeMs);
+            }
         };
         return JudoMap;
     }());
     Mapping.JudoMap = JudoMap;
 })(Mapping || (Mapping = {}));
-//# sourceMappingURL=JudoMap.js.map
