@@ -1,4 +1,5 @@
 ﻿using Microsoft.Practices.ServiceLocation;
+using MongoDB.Driver;
 using System;
 using Visualisation.Core.Interfaces;
 using Visualisation.Core.Services;
@@ -14,7 +15,6 @@ namespace Visualisation.Core.Domain
 		public string Postcode { get; set; }
 		public DateTimeOffset CreatedDate { get; set; }
 
-
 		public void Map()
 		{
 			var latLong = GetLatLong();
@@ -22,6 +22,25 @@ namespace Visualisation.Core.Domain
 
 			var mapDisplay = ServiceLocator.Current.GetInstance<IMapDisplay>();
 			mapDisplay.DisplayLocation(Title, latLong);
+
+			Save();
+		}
+
+		private void Save()
+		{
+			const string connectionString = "mongodb://localhost";
+
+			// Create a MongoClient object by using the connection string
+
+			var client = new MongoClient(connectionString);
+
+			var dave = client.ListDatabases();
+
+			//Use the MongoClient to access the server
+			var server = client.GetDatabase("test");
+
+			// Use the server to access the 'test' database
+			// MongoDatabase database = server.GetDatabase("test");
 		}
 
 		private LatLongPoint GetLatLong()
@@ -37,5 +56,7 @@ namespace Visualisation.Core.Domain
 			}
 			return null;
 		}
+
+
 	}
 }
