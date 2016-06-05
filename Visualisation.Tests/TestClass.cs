@@ -19,25 +19,24 @@ namespace Visualisation.Tests
 
 			for (var i = 0; i < 10; i++)
 			{
-				var request = new RestRequest("TransactionRequest/Location", Method.POST);
+				var request = new RestRequest("Map/Transaction", Method.POST);
 				var lat = random.Next(5000, 6000) / (double)100;
 				var longatude = random.Next(000, 1000) / (double)100;
 				request.AddParameter("latitude", lat);
 				request.AddParameter("longitude", -longatude);
 				request.AddParameter("title", "Test transaction");
-				request.AddParameter("AmountModfier", i);
 				request.AddParameter("PaymentType", "Payment");
 
 				var response = restClient.Post(request);
 
 				Assert.That(response, Is.Not.Null);
-				Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK));
+				Assert.That(response.StatusCode, Is.EqualTo(HttpStatusCode.OK), response.Content);
 			}
 
 			var postcodes = new[] { "HG1 5NA", "SE10 0QG", "N1 9HF", "SL4 1NJ", "ls10 3tp" };
 			for (var i = 0; i < 5; i++)
 			{
-				var request = new RestRequest("TransactionRequest/Location", Method.POST);
+				var request = new RestRequest("Map/Transaction", Method.POST);
 				request.AddParameter("Postcode", postcodes[i]);
 				request.AddParameter("title", "Postcode Test transaction");
 

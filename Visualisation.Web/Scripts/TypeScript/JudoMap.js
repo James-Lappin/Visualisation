@@ -30,13 +30,12 @@ var Mapping;
             this.map = new google.maps.Map(mapDiv, mapOptions);
             $(window).resize(function () { return _this.map.setCenter(latLngForCenter); });
         }
-        JudoMap.prototype.drawOnMap = function (label, lat, long, radiusModifier) {
+        JudoMap.prototype.drawOnMap = function (label, lat, long) {
             var point = new LatLng(lat, long);
-            var radius = 10000 * radiusModifier;
             var shape = new google.maps.Circle({
                 center: point,
                 map: this.map,
-                radius: radius,
+                radius: 10000,
                 visible: true,
                 clickable: false,
                 draggable: false,

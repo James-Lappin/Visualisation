@@ -11,13 +11,13 @@ namespace Visualisation.Core.Responsitories
 	public class MongoDbRepository<TEntity> : IRepository<TEntity>
 			where TEntity : EntityBase
 	{
-		private IMongoDatabase Database;
 		private IMongoCollection<TEntity> _collection;
+		private IMongoDatabase _database;
 
 		public MongoDbRepository()
 		{
-			GetDatabase();
-			GetCollection();
+			_database = GetDatabase();
+			_collection = GetCollection();
 		}
 
 		public void CreateOrUpdate(TEntity entity)
@@ -35,6 +35,11 @@ namespace Visualisation.Core.Responsitories
 		public void Delete(TEntity entity)
 		{
 			_collection.DeleteOne(x => x.Id == entity.Id);
+		}
+
+		public void DeleteAll()
+		{
+			_collection.DeleteMany(FilterDefinition<TEntity>.Empty);
 		}
 
 		public TEntity GetById(Guid id)
@@ -63,10 +68,16 @@ namespace Visualisation.Core.Responsitories
 		}
 
 		#region Private Helper Methods
-		private void GetDatabase()
+
+		private IMongoCollection<TEntity> GetCollection()
+		{
+			return _database.GetCollection<TEntity>(typeof(TEntity).Name);
+		}
+
+		private IMongoDatabase GetDatabase()
 		{
 			var client = new MongoClient(GetConnectionString());
-			Database = client.GetDatabase(GetDatabaseName());
+			return client.GetDatabase(GetDatabaseName());
 		}
 
 		private string GetConnectionString()
@@ -84,11 +95,6 @@ namespace Visualisation.Core.Responsitories
 				.Get("MongoDbDatabaseName");
 		}
 
-		private void GetCollection()
-		{
-			_collection = Database
-				.GetCollection<TEntity>(typeof(TEntity).Name);
-		}
 		#endregion
 	}
 }

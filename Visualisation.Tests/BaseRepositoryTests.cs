@@ -9,7 +9,6 @@ namespace Visualisation.Tests
 	public class BaseRepositoryTests
 	{
 		private MongoDbRepository<TestEntity> _testRepo;
-		private readonly Guid _testGuid = new Guid("00000000-1111-0000-1111-000000000000");
 
 		[SetUp]
 		public void SetUp()
@@ -20,7 +19,7 @@ namespace Visualisation.Tests
 		[OneTimeTearDown]
 		public void TestTearDown()
 		{
-			_testRepo.Database.DropCollection(typeof(TestEntity).Name);
+			_testRepo.DeleteAll();
 		}
 
 		[Test]

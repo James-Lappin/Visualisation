@@ -37,13 +37,12 @@ module Mapping {
             $(window).resize(() => this.map.setCenter(latLngForCenter));
         }
 
-        drawOnMap(label: string, lat: number, long: number, radiusModifier: number) {
+        drawOnMap(label: string, lat: number, long: number) {
             const point = new LatLng(lat, long);
-            var radius = 10000 * radiusModifier;
             var shape = new google.maps.Circle({
                 center: point,
                 map: this.map,
-                radius: radius,
+                radius: 10000,
                 visible: true,
                 clickable: false,
                 draggable: false,
