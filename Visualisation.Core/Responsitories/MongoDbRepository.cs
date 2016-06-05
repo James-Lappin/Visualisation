@@ -11,7 +11,7 @@ namespace Visualisation.Core.Responsitories
 	public class MongoDbRepository<TEntity> : IRepository<TEntity>
 			where TEntity : EntityBase
 	{
-		internal IMongoDatabase Database;
+		private IMongoDatabase Database;
 		private IMongoCollection<TEntity> _collection;
 
 		public MongoDbRepository()

@@ -2,10 +2,8 @@
 
 namespace Visualisation.Web.Controllers
 {
-	[AllowAnonymous]
 	public class DisplayController : Controller
 	{
-		[AllowAnonymous]
 		public ActionResult Map()
 		{
 			return View();

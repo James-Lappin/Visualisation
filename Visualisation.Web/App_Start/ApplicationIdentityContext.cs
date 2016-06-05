@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Visualisation.Core.Domain;
-using Visualisation.Web.Models;
 
 namespace Visualisation.Web
 {
@@ -15,6 +14,9 @@ namespace Visualisation.Web
 			// todo add settings where appropriate to switch server & database in your own application
 			var client = new MongoClient("mongodb://localhost:27017");
 			var database = client.GetDatabase("mydb");
+
+			//new MongoDbRepository<ApplicationUser>();
+
 			var users = database.GetCollection<ApplicationUser>("users");
 			var roles = database.GetCollection<IdentityRole>("roles");
 			return new ApplicationIdentityContext(users, roles);
