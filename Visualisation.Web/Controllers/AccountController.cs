@@ -325,21 +325,15 @@ namespace Visualisation.Web.Controllers
 
 			// Sign in the user with this external login provider if the user already has a login
 			var result = await SignInHelper.ExternalSignIn(loginInfo, isPersistent: false);
-			switch (result)
+			if (result == SignInStatus.Success)
 			{
-				case SignInStatus.Success:
-					return RedirectToLocal(returnUrl);
-				case SignInStatus.LockedOut:
-					return View("Lockout");
-				case SignInStatus.RequiresTwoFactorAuthentication:
-					return RedirectToAction("SendCode", new { ReturnUrl = returnUrl });
-				case SignInStatus.Failure:
-				default:
-					// If the user does not have an account, then prompt the user to create an account
-					ViewBag.ReturnUrl = returnUrl;
-					ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
-					return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
+				return RedirectToLocal(returnUrl);
 			}
+			
+			// If the user does not have an account, then prompt the user to create an account
+			ViewBag.ReturnUrl = returnUrl;
+			ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
+			return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel {Email = loginInfo.Email});
 		}
 
 		//
