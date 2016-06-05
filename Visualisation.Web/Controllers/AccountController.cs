@@ -1,10 +1,10 @@
-﻿using System.Linq;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
 using Visualisation.Core.Domain;
 using Visualisation.Web.Models;
 
@@ -154,11 +154,7 @@ namespace Visualisation.Web.Controllers
 				var result = await UserManager.CreateAsync(user, model.Password);
 				if (result.Succeeded)
 				{
-					var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-					var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-					await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
-					ViewBag.Link = callbackUrl;
-					return View("DisplayEmail");
+					return View("Login");
 				}
 				AddErrors(result);
 			}
@@ -391,7 +387,7 @@ namespace Visualisation.Web.Controllers
 		public ActionResult LogOff()
 		{
 			AuthenticationManager.SignOut();
-			return RedirectToAction("Index", "Home");
+			return RedirectToAction("Login", "Account");
 		}
 
 		//
@@ -416,13 +412,7 @@ namespace Visualisation.Web.Controllers
 		// Used for XSRF protection when adding external logins
 		private const string XsrfKey = "XsrfId";
 
-		private IAuthenticationManager AuthenticationManager
-		{
-			get
-			{
-				return HttpContext.GetOwinContext().Authentication;
-			}
-		}
+		private IAuthenticationManager AuthenticationManager => HttpContext.GetOwinContext().Authentication;
 
 		private void AddErrors(IdentityResult result)
 		{
@@ -438,7 +428,7 @@ namespace Visualisation.Web.Controllers
 			{
 				return Redirect(returnUrl);
 			}
-			return RedirectToAction("Index", "Home");
+			return RedirectToAction("Map", "Display");
 		}
 
 		internal class ChallengeResult : HttpUnauthorizedResult

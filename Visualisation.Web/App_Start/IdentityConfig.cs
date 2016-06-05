@@ -15,14 +15,16 @@ namespace Visualisation.Web
 	// Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
 	public class ApplicationUserManager : UserManager<ApplicationUser>
 	{
-		public ApplicationUserManager(IUserStore<ApplicationUser> store)
-			: base(store)
+		//Do not like this, however I have no idea how to inject this collect via unity
+		public ApplicationUserManager(IOwinContext context)
+			: base(new UserStore<ApplicationUser>(context.Get<ApplicationIdentityContext>().Users))
 		{
+
 		}
 
 		public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
 		{
-			var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationIdentityContext>().Users));
+			var manager = new ApplicationUserManager(context);
 			// Configure validation logic for usernames
 			manager.UserValidator = new UserValidator<ApplicationUser>(manager)
 			{

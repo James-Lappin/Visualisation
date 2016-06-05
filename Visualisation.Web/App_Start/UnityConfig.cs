@@ -1,15 +1,16 @@
 using AspNet.Identity.MongoDB;
 using Microsoft.AspNet.Identity;
+using Microsoft.Owin;
 using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Unity;
-using MongoDB.Driver;
 using System;
+using System.Web;
 using Visualisation.Core.Domain;
 using Visualisation.Core.Interfaces;
 using Visualisation.Core.Responsitories;
 using Visualisation.Core.Services;
+using Visualisation.Web.Controllers;
 using Visualisation.Web.Hubs;
-using Visualisation.Web.Models;
 
 namespace Visualisation.Web
 {
@@ -47,10 +48,8 @@ namespace Visualisation.Web
 			container.RegisterType<GeoLocationService, GeoLocationService>();
 			container.RegisterType<IRepository<TransactionRequest>, MongoDbRepository<TransactionRequest>>();
 			container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>();
-
-			var applicationIdentityContext = ApplicationIdentityContext.Create();
-
-			//container.RegisterType<IMongoCollection<ApplicationUser>, >();
+			container.RegisterType<IOwinContext>(new InjectionFactory(c => c.Resolve<HttpContextBase>().GetOwinContext()));
+			container.RegisterType<AccountController>(new InjectionConstructor());
 
 			//Service Locator
 			var unityServiceLocator = new UnityServiceLocator(container);
