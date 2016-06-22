@@ -5,7 +5,7 @@ using Visualisation.Core.Responsitories;
 
 namespace Visualisation.Core.Interfaces
 {
-	public interface IRepository<TEntity> where TEntity : EntityBase
+	public interface IRepository<TEntity> where TEntity : IEntity
 	{
 		void CreateOrUpdate(TEntity entity);
 		void Delete(TEntity entity);
