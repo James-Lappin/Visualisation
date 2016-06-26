@@ -51,6 +51,7 @@ namespace Visualisation.Web
 			container.RegisterType<IOwinContext>(new InjectionFactory(c => c.Resolve<HttpContextBase>().GetOwinContext()));
 			container.RegisterType<AccountController>(new InjectionConstructor());
 
+
 			//Service Locator
 			var unityServiceLocator = new UnityServiceLocator(container);
 			ServiceLocator.SetLocatorProvider(() => unityServiceLocator);

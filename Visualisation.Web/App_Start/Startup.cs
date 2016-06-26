@@ -28,8 +28,7 @@ namespace Visualisation.Web
 		private void ConfigureAuth(IAppBuilder app)
 		{
 			// Configure the db context, user manager and role manager to use a single instance per request
-			app.CreatePerOwinContext(ApplicationIdentityContext.Create);
-			app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
+			app.CreatePerOwinContext<ApplicationUserManager>((options, context) => ApplicationUserManager.Create(options));
 			app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
 
 			// Enable the application to use a cookie to store information for the signed in user

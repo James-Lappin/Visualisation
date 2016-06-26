@@ -1,4 +1,5 @@
 ﻿using AspNet.Identity.MongoDB;
+using Visualisation.Core.Responsitories;
 
 namespace Visualisation.Web
 {
@@ -6,9 +7,8 @@ namespace Visualisation.Web
 	{
 		public static void Exist()
 		{
-			var context = ApplicationIdentityContext.Create();
-			IndexChecks.EnsureUniqueIndexOnUserName(context.Users);
-			IndexChecks.EnsureUniqueIndexOnRoleName(context.Roles);
+			IndexChecks.EnsureUniqueIndexOnUserName(new ApplicationUserRepository().Users);
+			IndexChecks.EnsureUniqueIndexOnRoleName(new IdentityRoleRepository().Roles);
 		}
 	}
 }

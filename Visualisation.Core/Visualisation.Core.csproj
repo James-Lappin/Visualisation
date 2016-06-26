@@ -110,7 +110,10 @@
     <Compile Include="Interfaces\IMapDisplay.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Responsitories\ApplicationIdentityContext.cs" />
     <Compile Include="Responsitories\EntityBase.cs" />
+    <Compile Include="Responsitories\IdentityRoleRepository.cs" />
+    <Compile Include="Responsitories\MongoDbHelper.cs" />
     <Compile Include="Responsitories\MongoDbRepository.cs" />
     <Compile Include="Services\GeolocationService.cs" />
     <Compile Include="Domain\LatLongPoint.cs" />

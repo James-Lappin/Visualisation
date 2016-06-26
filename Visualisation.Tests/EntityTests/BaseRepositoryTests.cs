@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using Visualisation.Core.Responsitories;
 
-namespace Visualisation.Tests
+namespace Visualisation.Tests.EntityTests
 {
 	//Should be able to make all of these test abstract. So if I did want to make another IRepository, say for Redis we wouldnt need to rewrite all tests
 	public class BaseRepositoryTests
@@ -36,7 +36,7 @@ namespace Visualisation.Tests
 
 			//assert
 			Assert.That(testEntity, Is.Not.Null);
-			Assert.That(testEntity.Id, Is.Not.EqualTo(Guid.Empty));
+			Assert.That(testEntity.EntityId, Is.Not.EqualTo(Guid.Empty));
 		}
 
 		[Test]
@@ -45,7 +45,7 @@ namespace Visualisation.Tests
 			//arrange
 			var testEntity = new TestEntity();
 			_testRepo.CreateOrUpdate(testEntity);
-			var id = testEntity.Id;
+			var id = testEntity.EntityId;
 
 			var now = DateTimeOffset.UtcNow;
 			testEntity.Thing1 = "Updated Thing";
@@ -56,9 +56,9 @@ namespace Visualisation.Tests
 			_testRepo.CreateOrUpdate(testEntity);
 
 			//assert
-			var actual = _testRepo.GetById(testEntity.Id);
+			var actual = _testRepo.GetById(testEntity.EntityId);
 			Assert.That(actual, Is.Not.Null);
-			Assert.That(actual.Id, Is.EqualTo(id), "Id should not have changed when we update the object");
+			Assert.That(actual.EntityId, Is.EqualTo(id), "Id should not have changed when we update the object");
 			Assert.That(actual.Thing1, Is.EqualTo("Updated Thing"));
 			Assert.That(actual.Integer, Is.EqualTo(1045));
 			Assert.That(actual.Now, Is.EqualTo(now));
@@ -74,14 +74,14 @@ namespace Visualisation.Tests
 			};
 
 			_testRepo.CreateOrUpdate(testEntity);
-			var id = testEntity.Id;
+			var id = testEntity.EntityId;
 
 			//act
 			var actual = _testRepo.GetById(id);
 
 			//assert
 			Assert.That(actual, Is.Not.Null);
-			Assert.That(actual.Id, Is.EqualTo(id));
+			Assert.That(actual.EntityId, Is.EqualTo(id));
 			Assert.That(actual.Thing1, Is.EqualTo("GetById Thing"));
 		}
 
@@ -116,7 +116,7 @@ namespace Visualisation.Tests
 			};
 
 			_testRepo.CreateOrUpdate(testEntity);
-			var id = testEntity.Id;
+			var id = testEntity.EntityId;
 
 			//act
 			var actual = _testRepo.GetByFilter(x => x.Thing1 == "GetByFilter Thing");
@@ -126,7 +126,7 @@ namespace Visualisation.Tests
 			Assert.That(actual, Has.Count.EqualTo(1));
 
 			var entity = actual.First();
-			Assert.That(entity.Id, Is.EqualTo(id));
+			Assert.That(entity.EntityId, Is.EqualTo(id));
 			Assert.That(entity.Thing1, Is.EqualTo("GetByFilter Thing"));
 			Assert.That(entity.Integer, Is.EqualTo(24));
 			Assert.That(entity.Now, Is.EqualTo(now));
@@ -142,7 +142,7 @@ namespace Visualisation.Tests
 			};
 
 			_testRepo.CreateOrUpdate(testEntity);
-			var id = testEntity.Id;
+			var id = testEntity.EntityId;
 
 			//act
 			_testRepo.Delete(testEntity);
