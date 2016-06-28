@@ -11,6 +11,11 @@ namespace Visualisation.Core.Domain
 		public double? Longitude { get; set; }
 		public double? Latitude { get; set; }
 		public string Postcode { get; set; }
-		public DateTimeOffset CreatedDate { get; set; } = DateTimeOffset.Now;
+		public DateTimeOffset CreatedDate { get; set; }
+
+	    public TransactionRequest()
+	    {
+            CreatedDate = DateTimeOffset.Now;
+        }
 	}
 }
