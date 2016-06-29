@@ -44,7 +44,11 @@ namespace Visualisation.Web.Controllers
         }
 
         private SignInHelper _helper;
-        private SignInHelper SignInHelper => _helper ?? (_helper = new SignInHelper(UserManager, AuthenticationManager));
+
+        private SignInHelper SignInHelper
+        {
+            get { return _helper ?? (_helper = new SignInHelper(UserManager, AuthenticationManager)); }
+        }
 
         //
         // POST: /Account/Login
@@ -119,7 +123,7 @@ namespace Visualisation.Web.Controllers
         }
 
         #region Helpers
-        private IAuthenticationManager AuthenticationManager => HttpContext.GetOwinContext().Authentication;
+        private IAuthenticationManager AuthenticationManager {get { return HttpContext.GetOwinContext().Authentication; } } 
 
         private void AddErrors(IdentityResult result)
         {
