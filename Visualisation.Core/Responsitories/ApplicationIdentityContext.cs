@@ -3,19 +3,19 @@ using Visualisation.Core.Domain;
 
 namespace Visualisation.Core.Responsitories
 {
-	public class ApplicationUserRepository
-	{
-		public IMongoCollection<ApplicationUser> Users { get; }
+    public class ApplicationUserRepository
+    {
+        public IMongoCollection<ApplicationUser> Users { get; private set; }
 
-		public ApplicationUserRepository()
-		{
-			var database = MongoDbHelper.GetDatabase();
-			Users = MongoDbHelper.GetCollection<ApplicationUser>(database);
-		}
+        public ApplicationUserRepository()
+        {
+            var database = MongoDbHelper.GetDatabase();
+            Users = MongoDbHelper.GetCollection<ApplicationUser>(database);
+        }
 
-		public void DeleteAll()
-		{
-			Users.DeleteMany(FilterDefinition<ApplicationUser>.Empty);
-		}
-	}
+        public void DeleteAll()
+        {
+            Users.DeleteMany(FilterDefinition<ApplicationUser>.Empty);
+        }
+    }
 }
