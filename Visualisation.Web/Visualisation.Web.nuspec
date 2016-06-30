@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Judo.Visualisation</id>
+    <version>1.0</version>
+    <authors>Judo Payments</authors>
+    <owners>Judo Payments</owners>
+    <licenseUrl>http://www.judopayments.com</licenseUrl>
+    <projectUrl>http://www.judopayments.com</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Displaying transaction in an interactive way</description>
+    <copyright>Copyright 2016</copyright>
+  </metadata>
+</package>
