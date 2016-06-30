@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>Judo.Visualisation</id>
+    <id>Judo.Visualisation.Web</id>
     <version>1.0</version>
     <authors>Judo Payments</authors>
     <owners>Judo Payments</owners>
